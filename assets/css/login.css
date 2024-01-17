@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://wallpaperaccess.com/full/3053366.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Whitney", sans-serif;
+  text-rendering: optimizeLegibility;
+  user-select: none;
+}
+
+#svgBlob {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background: transparent;
+  transition: 1s;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    background-position: 0px 0px;
+  }
+  svgBlob {
+    top: 50;
+    left: 0;
+    transform: translate(0, -50%);
+  }
+  .qr-login {
+    display: none;
+  }
+  .horizontalSeparator {
+    display: none;
+  }
+  .container {
+    padding: 20px;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-70px);
+    opacity: 0;
+  }
+}

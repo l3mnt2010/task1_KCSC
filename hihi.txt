@@ -1,0 +1,4 @@
+<?php
+echo "123";
+echo '<pre><script>alert("huhuhuhuhu");</script></pre>';
+?>
