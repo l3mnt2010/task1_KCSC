@@ -1,8 +1,7 @@
 <?php
 include_once "../../app/config/db.php";
 $users = selectAll();
-include_once "../../app/helpers/middleware.php";
-// adminOnly();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

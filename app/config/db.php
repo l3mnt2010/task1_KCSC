@@ -134,17 +134,16 @@ function getUserById($id)
 
 function getUserByEmailSQLi($email)
 {
-    global $conn;
-    // Làm sạch giá trị email trước khi sử dụng
-    // $cleaned_email = mysqli_real_escape_string($conn, $email);
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $result = $conn->query($sql);
+  global $conn;
+  // $cleaned_email = mysqli_real_escape_string($conn, $email);
+  $sql = "SELECT * FROM users WHERE email = '$email'";
+  $result = $conn->query($sql);
 
-    if ($result) {
-        $user = $result->fetch_assoc();
-        $result->free_result();
-        return $user;
-    } else {
-        return null;
-    }
+  if ($result) {
+    $user = $result->fetch_assoc();
+    $result->free_result();
+    return $user;
+  } else {
+    return null;
+  }
 }

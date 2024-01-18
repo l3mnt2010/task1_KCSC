@@ -1,9 +1,9 @@
 # Robots.txt
 User-agent: * 
 
-Disallow: /admin/    
+#Disallow: /admin/    
 
-Allow: /assets/ 
-Allow: /guest.php
+#Allow: /assets/ 
+#Allow: /guest.php
 
 

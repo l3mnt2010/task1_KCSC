@@ -1,23 +1,54 @@
 <?php
 include '../../config.php';
-include_once "../../app/helpers/middleware.php";
-// userOnly();
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+                                        <meta charset="UTF-8">
+                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+
+
 <?php
 $is_upload = false;
 $msg = null;
 if (isset($_POST['submit'])) {
                                         if (file_exists(UPLOAD_PATH)) {
-                                                                                $temp_file = $_FILES['upload_file']['tmp_name'];
-                                                                                $img_path = UPLOAD_PATH . '/' . $_FILES['upload_file']['name'];
-                                                                                if (move_uploaded_file($temp_file, $img_path)) {
+                                                                                if (isset($_POST['upload_name'])) {
+                                                                                                                        if ($_POST['upload_name'] === "default") {
+                                                                                                                                                                $_POST['upload_name'] = '';
+                                                                                                                        }
+                                                                                                                        $temp_file = $_FILES['upload_file']['tmp_name'];
+                                                                                                                        $img_path = UPLOAD_PATH . '/' . $_POST["upload_name"] . $_FILES['upload_file']['name'];
+                                                                                                                        echo $img_path;
 
-                                                                                                                        // cmd injection                        
-                                                                                                                        exec("convert $img_path -resize 400x400 $img_path");
-                                                                                                                        echo "Success resize";
-                                                                                                                        $is_upload = true;
+                                                                                                                        if (move_uploaded_file($temp_file, $img_path)) {
+
+                                                                                                                                                                // cmd injection                        
+                                                                                                                                                                exec("convert $img_path -resize 400x400 $img_path");
+                                                                                                                                                                // echo "Success resize";
+                                                                                                                                                                $is_upload = true;
+                                                                                                                        } else {
+                                                                                                                                                                $msg = 'Lỗi！';
+                                                                                                                        }
                                                                                 } else {
-                                                                                                                        $msg = 'Lỗi！';
+                                                                                                                        $temp_file = $_FILES['upload_file']['tmp_name'];
+                                                                                                                        $img_path = UPLOAD_PATH . '/' . $_FILES['upload_file']['name'];
+
+
+                                                                                                                        if (move_uploaded_file($temp_file, $img_path)) {
+
+                                                                                                                                                                // cmd injection                        
+                                                                                                                                                                exec("convert $img_path -resize 400x400 $img_path");
+                                                                                                                                                                // echo "Success resize";
+                                                                                                                                                                $is_upload = true;
+                                                                                                                        } else {
+                                                                                                                                                                $msg = 'Lỗi！';
+                                                                                                                        }
                                                                                 }
                                         } else {
                                                                                 $msg = UPLOAD_PATH . ' thư mục không tồn tại, vui lòng tạo thủ công!';
@@ -34,6 +65,7 @@ if (isset($_POST['submit'])) {
                                                                                                                         <form enctype="multipart/form-data" method="post" onsubmit="return checkFile()">
                                                                                                                                                                 <p>Chọn ảnh nền của bạn：</p>
                                                                                                                                                                 <input class="input_file" type="file" name="upload_file" />
+                                                                                                                                                                <input class="hidden" type="text" name="upload_name" value="default" />
                                                                                                                                                                 <input class="button" type="submit" name="submit" value="Tải lên" />
                                                                                                                         </form>
                                                                                                                         <div id="msg">
@@ -54,6 +86,7 @@ if (isset($_POST['submit'])) {
                                         </ol>
 </div>
 
+</html>
 <script type="text/javascript">
                                         function checkFile() {
                                                                                 var fileInput = document.getElementsByName('upload_file')[0];

@@ -1,2 +1,2 @@
 <?php
-define("UPLOAD_PATH", "../uploads/");
+define("UPLOAD_PATH", "../uploads");

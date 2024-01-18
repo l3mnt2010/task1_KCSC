@@ -1,7 +1,6 @@
 <?php
 include '../../config.php';
-include_once "../../app/helpers/middleware.php";
-// userOnly();
+include_once "../../middleware.php";
 ?>
 <?php
 $is_upload = false;

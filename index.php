@@ -1,7 +1,6 @@
 <?php
 session_start();
-include_once "app/helpers/middleware.php";
-// userOnly();
+
 ?>
 <?php
 

@@ -1,41 +1,40 @@
 <?php
-include 'path.php';
 include("app/classes/User.php");
 include("app/classes/Utils.php");
 ?>
 
 <?php
 
-function userOnly($redirect =  'index.php')
-{
-                                        if (empty($_SESSION['id'])) {
-                                                                                $_SESSION['message'] = 'You must to login first';
-                                                                                $_SESSION['type'] = 'error';
-                                                                                header("Location: " . $redirect);
-                                                                                exit(0);
-                                        }
-}
+// function userOnly($redirect =  'index.php')
+// {
+//                                         if (empty($_SESSION['id'])) {
+//                                                                                 $_SESSION['message'] = 'You must to login first';
+//                                                                                 $_SESSION['type'] = 'error';
+//                                                                                 header("Location: " . $redirect);
+//                                                                                 exit(0);
+//                                         }
+// }
 
 
-function adminOnly($redirect = 'index.php')
-{
-                                        if (empty($_SESSION['id']) || empty($_SESSION['admin'])) {
-                                                                                $_SESSION['message'] = 'You are not authorization';
-                                                                                $_SESSION['type'] = 'error';
-                                                                                header("Location: " . $redirect);
-                                                                                exit(0);
-                                        }
-}
+// function adminOnly($redirect = 'index.php')
+// {
+//                                         if (empty($_SESSION['id']) || empty($_SESSION['admin'])) {
+//                                                                                 $_SESSION['message'] = 'You are not authorization';
+//                                                                                 $_SESSION['type'] = 'error';
+//                                                                                 header("Location: " . $redirect);
+//                                                                                 exit(0);
+//                                         }
+// }
 
-function guestOnly($redirect = 'index.php')
-{
-                                        if (empty($_SESSION['id']) || empty($_SESSION['admin'])) {
-                                                                                $_SESSION['message'] = 'You are not authorization';
-                                                                                $_SESSION['type'] = 'error';
-                                                                                header("Location: " . $redirect);
-                                                                                exit(0);
-                                        }
-}
+// function guestOnly($redirect = 'index.php')
+// {
+//                                         if (empty($_SESSION['id']) || empty($_SESSION['admin'])) {
+//                                                                                 $_SESSION['message'] = 'You are not authorization';
+//                                                                                 $_SESSION['type'] = 'error';
+//                                                                                 header("Location: " . $redirect);
+//                                                                                 exit(0);
+//                                         }
+// }
 
 
 

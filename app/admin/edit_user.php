@@ -1,7 +1,6 @@
 <?php
 include_once "../../app/config/db.php";
-include_once "../../app/helpers/middleware.php";
-// adminOnly();
+
 ?>
 
 <?php
